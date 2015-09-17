@@ -674,7 +674,9 @@
 (deftest literals-test
   (testing "converts words to lower case"
     (is (= "foobar" (render "{{\"FOObar\"|lower}}" {})))
-    (is (= "10" (render "{{1|add:2:3:4}}" {})))))
+    (is (= "10" (render "{{1|add:2:3:4}}" {}))))
+  (testing "parses string literals with pipes"
+    (is (= "foo|bar" (render "{{\"foo|BAR\"|lower}}" {})))))
 
 (deftest number-format-test
   (testing "formats the number with default locale"
